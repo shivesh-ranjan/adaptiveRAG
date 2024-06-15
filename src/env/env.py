@@ -2,7 +2,7 @@ import os
 
 def setupEnv():
     # set api keys here
-    os.environ['TAVILY_API_KEY'] = "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"
+    os.environ['TAVILY_API_KEY'] = "#"
 
     os.environ['LANGCHAIN_TRACING_V2'] = 'true'
     os.environ['LANGCHAIN_ENDPOINT'] = 'https://api.smith.langchain.com'
