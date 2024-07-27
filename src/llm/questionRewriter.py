@@ -1,11 +1,12 @@
 from langchain.prompts import PromptTemplate
 from langchain_community.chat_models.ollama import ChatOllama
 from langchain_core.output_parsers import StrOutputParser
+from src.env.env import LOCAL_LLM
 
 
-def GetQuestionRewriter(localLLM:str="phi3", temperature:int=0):
+def GetQuestionRewriter():
     # LLM
-    llm = ChatOllama(model=localLLM, temperature=temperature)
+    llm = ChatOllama(model=LOCAL_LLM, temperature=0)
 
     # Prompt 
     re_write_prompt = PromptTemplate(

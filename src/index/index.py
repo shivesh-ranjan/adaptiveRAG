@@ -1,7 +1,7 @@
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders.web_base import WebBaseLoader
 from langchain_community.vectorstores.chroma import Chroma
-from langchain_community.embeddings.gpt4all import GPT4AllEmbeddings
+from langchain_nomic.embeddings import NomicEmbeddings
 
 def getDocs(docList:list, docType: str) -> list:
     if docType=="urls":
@@ -26,7 +26,7 @@ def getRetriever(docList:list, docType: str, collectionName:str, chunkSize:int =
     vectorstore = Chroma.from_documents(
         documents=doc_splits,
         collection_name=collectionName,
-        embedding=GPT4AllEmbeddings(),
+        embedding=NomicEmbeddings(model="nomic-embed-text-v1.5", inference_mode="local"),
     )
     retriever = vectorstore.as_retriever()
     return retriever

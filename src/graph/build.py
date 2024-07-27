@@ -1,4 +1,4 @@
-from langgraph.graph import END, StateGraph
+from langgraph.graph import END, StateGraph, START
 
 from src.graph.graphState import GraphState
 from src.graph.nodes import *
@@ -16,7 +16,8 @@ def GetApp():
     workflow.add_node("transform_query", transform_query)  # transform_query
 
     # Build graph
-    workflow.set_conditional_entry_point(
+    workflow.add_conditional_edges(
+        START,
         route_question,
         {
             "web_search": "web_search",
@@ -43,6 +44,7 @@ def GetApp():
             "not useful": "transform_query",
         },
     )
+
     # Compile
     app = workflow.compile()
 

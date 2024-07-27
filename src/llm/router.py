@@ -1,10 +1,11 @@
 from langchain.prompts import PromptTemplate
 from langchain_community.chat_models.ollama import ChatOllama
 from langchain_core.output_parsers import JsonOutputParser
+from src.env.env import LOCAL_LLM
 
 
-def GetQuestionRouter(localLLM: str = "phi3", temperature: int = 0):
-    llm = ChatOllama(model=localLLM, format="json", temperature=temperature)
+def GetQuestionRouter():
+    llm = ChatOllama(model=LOCAL_LLM, format="json")
 
     prompt = PromptTemplate(
         template="""You are an expert at routing a user question to a vectorstore or web search. \n

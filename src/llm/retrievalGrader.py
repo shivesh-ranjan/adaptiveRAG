@@ -1,10 +1,11 @@
 from langchain.prompts import PromptTemplate
 from langchain_community.chat_models.ollama import ChatOllama
 from langchain_core.output_parsers import JsonOutputParser
+from src.env.env import LOCAL_LLM
 
 
-def GetRetrievalGrader(localLLM: str = "phi3", temperature: int = 0):
-    llm = ChatOllama(model=localLLM, format="json", temperature=temperature)
+def GetRetrievalGrader():
+    llm = ChatOllama(model=LOCAL_LLM)
 
     prompt = PromptTemplate(
         template="""You are a grader assessing relevance of a retrieved document to a user question. \n 

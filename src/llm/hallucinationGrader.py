@@ -2,9 +2,10 @@
 from langchain.prompts import PromptTemplate
 from langchain_community.chat_models.ollama import ChatOllama
 from langchain_core.output_parsers import JsonOutputParser
+from src.env.env import LOCAL_LLM
 
-def GetHallucinationGrader(localLLM: str = "phi3", temperature: int = 0):
-    llm = ChatOllama(model=localLLM, format="json", temperature= temperature)
+def GetHallucinationGrader():
+    llm = ChatOllama(LOCAL_LLM)
 
     # Prompt
     prompt = PromptTemplate(

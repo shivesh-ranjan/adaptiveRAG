@@ -4,7 +4,7 @@ from src.llm.answerGrader import GetAnswerGrader
 from pprint import pprint
 
 
-def route_question(state) -> str:
+def route_question(state):
     """
     Route question to web search or RAG.
 
@@ -19,7 +19,7 @@ def route_question(state) -> str:
     question = state["question"]
     print(question)
 
-    question_router = GetQuestionRouter("llama3")
+    question_router = GetQuestionRouter()
 
     source = question_router.invoke({"question": question})
     print(source)

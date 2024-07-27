@@ -45,7 +45,7 @@ from src.env.env import setupEnv
 setupEnv()
 app = GetApp()
 while True:
-    question = input("[User]: ")
+    question = input(">>> ")
     if question in ["exit", "Exit", "EXIT"]:
         break
     else:
@@ -58,4 +58,5 @@ while True:
                 # pprint.pprint(value["keys"], indent=2, width=80, depth=None)
                 pprint("\n---\n")
                 # Final generation
-                if "generation" in value.keys(): pprint(value["generation"])
+                #if "generation" in value.keys(): 
+        pprint(value["generation"])
